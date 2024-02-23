@@ -14,6 +14,7 @@ import com.org.messportal.entity.MenuDetail;
 import com.org.messportal.entity.Order;
 import com.org.messportal.entity.User;
 import com.org.messportal.util.ORDER_STATUS;
+import com.org.messportal.util.StringRandom;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -88,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
 		Order order = new Order();
 		System.out.println(orderDto.toString());
 		order.setDeliveryType(orderDto.getDeliveryType());
-		order.setOrderCode("sdfghj");
+		order.setOrderCode(StringRandom.getRandomCode());
 		order.setStatus(ORDER_STATUS.BOOKED);
 		order.setUpdatedTime(LocalDateTime.now());
 		MenuDetail menudetail = FindMenuById(orderDto.getMenuId());

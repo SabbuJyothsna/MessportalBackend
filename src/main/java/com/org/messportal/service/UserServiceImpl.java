@@ -20,6 +20,7 @@ import com.org.messportal.entity.Address;
 import com.org.messportal.entity.Role;
 import com.org.messportal.entity.User;
 import com.org.messportal.util.ACTIVE;
+import com.org.messportal.util.StringRandom;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -75,6 +76,7 @@ public class UserServiceImpl implements UserService {
 		user.setEmail(userDto.getEmail());
 		user.setUserName(userDto.getUserName());
 		user.setUserIdProof(userDto.getUserIdProof());
+		user.setEmailVerificationCode(StringRandom.getRandomCode());
 		user.setUserPhone(userDto.getUserPhone());
 		user.setPassword((Base64.getEncoder().encodeToString(userDto.getPassword().getBytes(StandardCharsets.UTF_8))));
 		user.setRole(findRolesById(userDto.getRoleId()));
